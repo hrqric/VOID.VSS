@@ -6,6 +6,7 @@ using VOID.VSS.Application.Commands.Components.Stock;
 namespace VOID.VSS.Presentation.Controllers;
 
 [ApiController]
+[Route("api/[controller]")]
 public class AddressController() : ControllerBase
 {
     [HttpPost("insertAddress")]

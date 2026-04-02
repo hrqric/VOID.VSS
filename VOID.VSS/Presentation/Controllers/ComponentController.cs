@@ -7,6 +7,7 @@ using VOID.VSS.Application.Queries;
 namespace VOID.VSS.Presentation.Controllers;
 
 [ApiController]
+[Route("api/[controller]")]
 public class ComponentController() : ControllerBase
 {
     [HttpPost("insertComponent")]
