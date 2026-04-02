@@ -24,14 +24,13 @@ builder.Services.AddCors(options =>
 
 
 var app = builder.Build();
-if(app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.MapGet("/", () => "Starting Void Stock System API..." +
-                      $"\n v0.1.0" ); // mudar versão td vez que mudar algo
+                      $"\n v0.1.1" ); // mudar versão td vez que mudar algo
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
