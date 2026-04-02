@@ -27,7 +27,6 @@
       <Folder Include="Application\Commands\Components\Movements\" />
       <Folder Include="Application\Commands\Projects\" />
       <Folder Include="Application\Commands\Users\" />
-      <Folder Include="Application\Queries\Address\" />
       <Folder Include="Application\Validators\" />
       <Folder Include="Domain\Commons\Validators\" />
       <Folder Include="Domain\Interfaces\" />
