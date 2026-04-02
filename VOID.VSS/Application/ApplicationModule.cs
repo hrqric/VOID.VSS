@@ -1,5 +1,6 @@
 ﻿using VOID.VSS.Application.Commands.Address;
 using VOID.VSS.Application.Commands.Components.Stock;
+using VOID.VSS.Application.Queries;
 
 namespace VOID.VSS.Application;
 
@@ -15,7 +16,9 @@ public static class ApplicationModule
     {
         services
             .AddScoped<ComponentCommandHandler>()
-            .AddScoped<AddressCommandHandler>();
+            .AddScoped<AddressCommandHandler>()
+            .AddScoped<ComponentQueryHandler>()
+            ;
         return services;
     }
 

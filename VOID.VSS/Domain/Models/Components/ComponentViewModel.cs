@@ -4,7 +4,7 @@ namespace VOID.VSS.Domain.Models.Components;
 
 public class ComponentViewModel : IExamplesProvider<ComponentViewModel>
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } 
     public string ComponentName { get; set; }
     public string ComponentClass { get; set; }
     public int Address { get; set; }
