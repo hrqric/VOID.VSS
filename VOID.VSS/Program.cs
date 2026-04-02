@@ -30,7 +30,8 @@ if(app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/", () => "Starting Void Stock System API... ");
+app.MapGet("/", () => "Starting Void Stock System API..." +
+                      $"\n v0.1.0" ); // mudar versão td vez que mudar algo
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
