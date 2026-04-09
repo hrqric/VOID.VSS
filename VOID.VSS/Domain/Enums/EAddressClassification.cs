@@ -2,7 +2,9 @@
 
 public enum EAddressClassification
 {
-    Eletrico = 0,
-    Inflamavel = 1,
+    Eletronica = 0,
+    Aerodinamica_E_Estruturas = 1,
+    Recuperacao = 3,
+    Propulsao = 4, 
     Teste = 28
 }
