@@ -6,6 +6,6 @@ public class InsertComponentCommand
     public string ComponentClass { get; set; }
     public int Address { get; set; }
     
-    public int? Quantity { get; set; }
+    public int Quantity { get; set; }
     
 }

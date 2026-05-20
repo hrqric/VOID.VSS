@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using VOID.VSS.Application;
 using VOID.VSS.Infrastructure.Configurations;
 
@@ -12,6 +13,18 @@ builder.Services.ConfigureApplication();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "https://SEU-PROJETO.supabase.co/auth/v1";
+        options.TokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = false
+        };
+    });
 
 
 builder.Services.AddCors(options =>
@@ -34,4 +47,6 @@ app.MapGet("/", () => "Starting Void Stock System API..." +
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
