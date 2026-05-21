@@ -16,7 +16,7 @@ public class QuantityQueryHandler(IDapperWrapper dapperWrapper)
                         SELECT
                             "itemquantity"
                         FROM stock_quantity
-                        WHERE "componentId" = @componentId
+                        WHERE "componentid" = @componentId
                       """;
         var result =
             await dapperWrapper.GetRecordAsync<int>(EDatabase.Postgres, databaseQuery,

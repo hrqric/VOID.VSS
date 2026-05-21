@@ -14,7 +14,7 @@ public class ComponentQueryHandler(IDapperWrapper dapperWrapper)
         DynamicParameters parameters = new();
         List<string> queryWhere = new();
 
-    #region Where
+        #region Where
 
         if (query.ComponentId != null)
         {
@@ -33,35 +33,45 @@ public class ComponentQueryHandler(IDapperWrapper dapperWrapper)
             parameters.Add("address", query.Address);
             queryWhere.Add("s.\"address\" = @address");
         }
-        
+
         string where = string.Join(" AND ", queryWhere);
-        
+
         #endregion
-        
-        var databaseQuery = queryWhere.Count > 0 ? $"""
-                        SELECT
-                            "componentId" AS "Id",
-                            "componentName" AS "ComponentName",
-                            "componentClass" AS "ComponentClass",
-                            "address" AS "Address"
-                        FROM stock s
-                        WHERE {where}
-                      """ : $"""
-                        SELECT
-                            "componentId" AS "Id",
-                            "componentName" AS "ComponentName",
-                            "componentClass" AS "ComponentClass",
-                            "address" AS "Address"
-                        FROM stock
-                      """;
+
+        var databaseQuery = queryWhere.Count > 0
+            ? $"""
+                 SELECT
+                     "componentId" AS "Id",
+                     "componentName" AS "ComponentName",
+                     "componentClass" AS "ComponentClass",
+                     "address" AS "Address",
+                     "details"  AS "Details",
+                     "price"  AS "Price",
+                     "status"  AS "Status"
+                 FROM stock s
+                 WHERE {where}
+               """
+            : $"""
+                 SELECT
+                     "componentId" AS "Id",
+                     "componentName" AS "ComponentName",
+                     "componentClass" AS "ComponentClass",
+                     "address" AS "Address",
+                     "details"  AS "Details",
+                     "price"  AS "Price",
+                     "status"  AS "Status"
+                 FROM stock
+               """;
         var result =
             await dapperWrapper.GetRecordsAsync<ComponentViewModel>(EDatabase.Postgres, databaseQuery,
                 cancellationToken, parameters);
         foreach (var item in result)
         {
-            item.Quantity = await quantityQueryHandler.GetQuantityHandleAsync(new GetQuantityQuery{ ComponentId = item.Id }, cancellationToken);
+            item.Quantity =
+                await quantityQueryHandler.GetQuantityHandleAsync(new GetQuantityQuery { ComponentId = item.Id },
+                    cancellationToken);
         }
-        
+
         return result;
     }
 }
