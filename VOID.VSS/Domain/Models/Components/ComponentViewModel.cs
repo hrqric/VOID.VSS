@@ -4,10 +4,15 @@ namespace VOID.VSS.Domain.Models.Components;
 
 public class ComponentViewModel : IExamplesProvider<ComponentViewModel>
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } 
     public string ComponentName { get; set; }
     public string ComponentClass { get; set; }
     public int Address { get; set; }
+    public string Status  { get; set; }
+    public string Details { get; set; }
+    public float Price { get; set; }
+    
+    public int Quantity { get; set; }
 
     public ComponentViewModel GetExamples()
     {
@@ -17,6 +22,10 @@ public class ComponentViewModel : IExamplesProvider<ComponentViewModel>
             ComponentName = "string",
             ComponentClass = "string",
             Address = 0,
+            Status = "string",
+            Details = "string",
+            Price = 0.1f,
+            Quantity = 0
         };
     }
 

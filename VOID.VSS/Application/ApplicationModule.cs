@@ -1,5 +1,9 @@
 ﻿using VOID.VSS.Application.Commands.Address;
 using VOID.VSS.Application.Commands.Components.Stock;
+using VOID.VSS.Application.Commands.Components.Stock.Movements;
+using VOID.VSS.Application.Commands.Users;
+using VOID.VSS.Application.Queries;
+using VOID.VSS.Application.Queries.Address;
 
 namespace VOID.VSS.Application;
 
@@ -15,7 +19,13 @@ public static class ApplicationModule
     {
         services
             .AddScoped<ComponentCommandHandler>()
-            .AddScoped<AddressCommandHandler>();
+            .AddScoped<AddressCommandHandler>()
+            .AddScoped<ComponentQueryHandler>()
+            .AddScoped<AddressQueryHandler>()
+            .AddScoped<MovementCommandHandler>()
+            .AddScoped<QuantityQueryHandler>()
+            .AddScoped<UserCommandHandler>()
+            ;
         return services;
     }
 
