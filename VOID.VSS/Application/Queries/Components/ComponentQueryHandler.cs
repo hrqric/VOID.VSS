@@ -10,6 +10,7 @@ public class ComponentQueryHandler(IDapperWrapper dapperWrapper)
 {
     public async Task<dynamic> GetComponentHandleAsync(GetComponentQuery query, CancellationToken cancellationToken)
     {
+        QuantityQueryHandler quantityQueryHandler = new(dapperWrapper);
         DynamicParameters parameters = new();
         List<string> queryWhere = new();
 
@@ -56,6 +57,10 @@ public class ComponentQueryHandler(IDapperWrapper dapperWrapper)
         var result =
             await dapperWrapper.GetRecordsAsync<ComponentViewModel>(EDatabase.Postgres, databaseQuery,
                 cancellationToken, parameters);
+        foreach (var item in result)
+        {
+            item.Quantity = await quantityQueryHandler.GetQuantityHandleAsync(new GetQuantityQuery{ ComponentId = item.Id }, cancellationToken);
+        }
         
         return result;
     }
