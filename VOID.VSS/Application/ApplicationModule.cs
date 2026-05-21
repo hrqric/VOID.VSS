@@ -1,6 +1,7 @@
 ﻿using VOID.VSS.Application.Commands.Address;
 using VOID.VSS.Application.Commands.Components.Stock;
 using VOID.VSS.Application.Commands.Components.Stock.Movements;
+using VOID.VSS.Application.Commands.Users;
 using VOID.VSS.Application.Queries;
 using VOID.VSS.Application.Queries.Address;
 
@@ -22,6 +23,7 @@ public static class ApplicationModule
             .AddScoped<ComponentQueryHandler>()
             .AddScoped<AddressQueryHandler>()
             .AddScoped<MovementCommandHandler>()
+            .AddScoped<UserCommandHandler>()
             ;
         return services;
     }
