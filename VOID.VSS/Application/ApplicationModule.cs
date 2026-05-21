@@ -23,6 +23,7 @@ public static class ApplicationModule
             .AddScoped<ComponentQueryHandler>()
             .AddScoped<AddressQueryHandler>()
             .AddScoped<MovementCommandHandler>()
+            .AddScoped<QuantityQueryHandler>()
             .AddScoped<UserCommandHandler>()
             ;
         return services;
